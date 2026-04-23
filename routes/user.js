@@ -1,17 +1,17 @@
 const express = require("express");
 const userController = require("../controllers/user");
-const { verify, verifyAdmin, verifyUserAccess } = require("../auth");
+const { verify, verifyAdmin } = require("../auth");
 
 const router = express.Router();
 
 router.post("/register", userController.registerUser);
 router.post("/login", userController.loginUser);
 
-router.get("/details", verify, verifyUserAccess, userController.getProfile);
-router.get("/auth/me", verify, verifyUserAccess, userController.getUserDetails);
+router.get("/details", verify, userController.getProfile); // Remove verifyUserAccess
+router.get("/auth/me", verify, userController.getUserDetails); // Remove verifyUserAccess
 
-router.patch("/update-password", verify, verifyUserAccess, userController.updatePassword);
-router.patch("/update-profile", verify, verifyUserAccess, userController.updateProfile);
+router.patch("/update-password", verify, userController.updatePassword); // Remove verifyUserAccess
+router.patch("/update-profile", verify, userController.updateProfile); // Remove verifyUserAccess
 
 router.patch("/:id/set-as-admin", verify, verifyAdmin, userController.updateAdmin);
 

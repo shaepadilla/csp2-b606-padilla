@@ -66,18 +66,6 @@ module.exports.verifyAdmin = (req, res, next) => {
 }
 
 
-module.exports.verifyUserAccess = (req, res, next) => {
-    if (req.user && (req.user.id === req.params.id || req.user.isAdmin)) {
-        next();
-    } else {
-        return res.status(403).send({
-            auth: "Failed",
-            message: "Action Forbidden - You can only access your own data"
-        });
-    }
-}
-
-
 module.exports.errorHandler = (err, req, res, next) => {
 
 	console.error(err);	
