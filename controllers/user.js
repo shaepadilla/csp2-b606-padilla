@@ -5,31 +5,56 @@ const auth = require("../auth");
 // 🛡️ User Registration
 module.exports.registerUser = async (req, res) => {
     try {
-        // ✅ Normalize email to lowercase to ensure consistency
+
         const email = req.body.email.toLowerCase();
 
         if (!email.includes("@")) {
-            return res.status(400).send({ message: "Email invalid" });
-        } else if (req.body.mobileNo.length !== 11) {
-            return res.status(400).send({ message: "Mobile number invalid" });
-        } else if (req.body.password.length < 8) {
-            return res.status(400).send({ message: "Password must be at least 8 characters" });
+            return res.status(400).send({
+                message: "Email invalid"
+            });
+        }
+
+        if (req.body.mobileNo.length !== 11) {
+            return res.status(400).send({
+                message: "Mobile number invalid"
+            });
+        }
+
+        if (req.body.password.length < 8) {
+            return res.status(400).send({
+                message: "Password must be at least 8 characters"
+            });
         }
 
         const newUser = new User({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            email, // ✅ Store email in lowercase
+            email: email,
             mobileNo: req.body.mobileNo,
-            password: bcrypt.hashSync(req.body.password, 10),
+            password: bcrypt.hashSync(req.body.password,10)
         });
 
         const result = await newUser.save();
-        return res.status(201).json({ message: "Registered successfully", user: result });
 
-    } catch (error) {
-        console.error("❌ Registration Error:", error);
-        return res.status(500).json({ message: "Internal server error", error: error.message });
+        return res.status(201).send({
+            message: "Registered successfully",
+            user: result
+        });
+
+    } catch(error) {
+
+        // Duplicate email handling
+        if (error.code === 11000) {
+            return res.status(409).send({
+                message: "Email already exists"
+            });
+        }
+
+        console.error(error);
+
+        return res.status(500).send({
+            message: "Internal server error"
+        });
     }
 };
 
