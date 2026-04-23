@@ -2,25 +2,23 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 
 // [SECTION] Route Imports
-const userRoutes = require("./routes/user");      // Matches routes/user.js
-const productRoutes = require("./routes/product"); // Matches routes/product.js 
-const cartRoutes = require("./routes/cart");      // Matches routes/cart.js
-const orderRoutes = require("./routes/order");    // Matches routes/order.js
-
-// [SECTION] Environment Setup
-require('dotenv').config();
+const userRoutes = require("./routes/user");
+const productRoutes = require("./routes/product");
+const cartRoutes = require("./routes/cart");
+const orderRoutes = require("./routes/order");
 
 // [SECTION] Server Setup
 const app = express();
+
+// [SECTION] CORS Configuration
 const corsOptions = {
-    origin: [
-        ''
-    ],
+    origin: ["*"], // allow requests during testing
     credentials: true,
-    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 };
 
 // [SECTION] Middleware Configuration
@@ -34,22 +32,28 @@ mongoose.connect(process.env.MONGODB_STRING, {
     useUnifiedTopology: true
 });
 
-mongoose.connection.once('open', () => console.log("Now connected to MongoDB Atlas."));
-mongoose.connection.on('error', (err) => console.error("MongoDB connection error:", err));
+mongoose.connection.once("open", () => {
+    console.log("Now connected to MongoDB Atlas.");
+});
 
-// [SECTION] Backend Routes with /b6 prefix
-app.use("//users", userRoutes);
-app.use("//products", productRoutes);
-app.use("//cart", cartRoutes);
-app.use("//orders", orderRoutes);
+mongoose.connection.on("error", (err) => {
+    console.error("MongoDB connection error:", err);
+});
+
+// [SECTION] Backend Routes
+app.use("/b6/users", userRoutes);
+app.use("/b6/products", productRoutes);
+app.use("/b6/cart", cartRoutes);
+app.use("/b6/orders", orderRoutes);
 
 // [SECTION] Server Gateway Response
-if(require.main === module){
+if (require.main === module) {
     const PORT = process.env.PORT || 4000;
+
     app.listen(PORT, () => {
         console.log(`API is now online on port ${PORT}`);
-        console.log(`AWS accessible at: http://ec2-3-15-19-15.us-east-2.compute.amazonaws.com:${PORT}/b6`);
     });
 }
 
-module.exports = { app, mongoose };
+// Export app for unit testing
+module.exports = app;
