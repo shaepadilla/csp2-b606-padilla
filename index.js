@@ -16,11 +16,7 @@ require('dotenv').config();
 const app = express();
 const corsOptions = {
     origin: [
-        'http://localhost:3000', // React default port
-        'http://localhost:8000',
-        'http://ec2-3-15-19-15.us-east-2.compute.amazonaws.com',
-        'http://zuitt-bootcamp-prod-530-8627-gandollas.s3-website.us-east-1.amazonaws.com',
-        'http://zuitt-bootcamp-prod-530-8600-hernandez.s3-website.us-east-1.amazonaws.com/'
+        ''
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
@@ -42,10 +38,10 @@ mongoose.connection.once('open', () => console.log("Now connected to MongoDB Atl
 mongoose.connection.on('error', (err) => console.error("MongoDB connection error:", err));
 
 // [SECTION] Backend Routes with /b6 prefix
-app.use("/b6/users", userRoutes);
-app.use("/b6/products", productRoutes);
-app.use("/b6/cart", cartRoutes);
-app.use("/b6/orders", orderRoutes);
+app.use("//users", userRoutes);
+app.use("//products", productRoutes);
+app.use("//cart", cartRoutes);
+app.use("//orders", orderRoutes);
 
 // [SECTION] Server Gateway Response
 if(require.main === module){
