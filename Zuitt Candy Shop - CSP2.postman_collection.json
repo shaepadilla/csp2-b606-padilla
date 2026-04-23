@@ -32,7 +32,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@mail.com\",\n    \"mobileNo\": \"09123456789\",\n    \"password\": \"john12345678\",\n    \"batch_number\": 422\n}"
+              "raw": "{\n    \"firstName\": \"James\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jamesDoe@mail.com\",\n    \"mobileNo\": \"09000000003\",\n    \"password\": \"sample123\",\n    \"batch_number\": 422\n}"
             },
             "url": {
               "raw": "http://localhost:4000/boodle/capstone/csp2/users/register",
@@ -105,7 +105,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0MjM5ZGQ1OWQ2MmYzODJjNjA1NyIsImVtYWlsIjoiam9obmRvZUBtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3NzY5NjA1ODgsImV4cCI6MTc3NzU2NTM4OH0.u-AeDrt7IOOqxKmdvrdccTGU2RS9WKVabFp5dDPhovA",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0ZDA5NGIwZDMxNmNhZDUzNDU4MyIsImVtYWlsIjoiam9obmRvZUBtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3NzY5NjI5NzIsImV4cCI6MTc3NzU2Nzc3Mn0.kvE0y2SgNVygR-nDoteCJ-Lq2KJMpkIyk51hXS8Bj5M",
                   "type": "string"
                 }
               ]
@@ -147,7 +147,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0MjM5ZGQ1OWQ2MmYzODJjNjA1NyIsImVtYWlsIjoiam9obmRvZUBtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3NzY5NjA1ODgsImV4cCI6MTc3NzU2NTM4OH0.u-AeDrt7IOOqxKmdvrdccTGU2RS9WKVabFp5dDPhovA",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0ZDA5NGIwZDMxNmNhZDUzNDU4MyIsImVtYWlsIjoiam9obmRvZUBtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3NzY5NjI5NzIsImV4cCI6MTc3NzU2Nzc3Mn0.kvE0y2SgNVygR-nDoteCJ-Lq2KJMpkIyk51hXS8Bj5M",
                   "type": "string"
                 }
               ]
@@ -164,7 +164,7 @@
               "raw": "{\n    \"batch_number\": 422\n}"
             },
             "url": {
-              "raw": "http://localhost:4000/boodle/capstone/csp2/users/69ea4239dd59d62f382c6057/set-as-admin",
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/69ea4d094b0d316cad534583/set-as-admin",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -175,7 +175,7 @@
                 "capstone",
                 "csp2",
                 "users",
-                "69ea4239dd59d62f382c6057",
+                "69ea4d094b0d316cad534583",
                 "set-as-admin"
               ]
             }
