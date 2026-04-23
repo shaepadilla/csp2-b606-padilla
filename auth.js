@@ -11,6 +11,7 @@ module.exports.createAccessToken = (user) => {
 	return jwt.sign(data, process.env.JWT_SECRET_KEY, {});
 }
 
+
 module.exports.verify = (req, res, next) => {
 
 	console.log(req.headers.authorization);
@@ -64,6 +65,7 @@ module.exports.verifyAdmin = (req, res, next) => {
 	}
 }
 
+
 module.exports.errorHandler = (err, req, res, next) => {
 
 	console.error(err);	
@@ -80,10 +82,24 @@ module.exports.errorHandler = (err, req, res, next) => {
 	})
 }
 
+
 module.exports.isLoggedIn = (req, res, next) => {
     if (req.user) {
         next();
     } else {
         res.sendStatus(401);
+    }
+}
+
+
+module.exports.verifyUserAccess = (req, res, next) => {
+    // Check if user is accessing their own data OR is admin
+    if (req.user && (req.user.id === req.params.id || req.user.isAdmin)) {
+        next();
+    } else {
+        return res.status(403).send({
+            auth: "Failed",
+            message: "Action Forbidden - You can only access your own data"
+        });
     }
 }
