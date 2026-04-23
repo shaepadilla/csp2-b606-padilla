@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+    
     firstName: {
         type: String,
         required: [true, 'First Name is Required']
@@ -26,5 +27,6 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Mobile Number is Required']
     }
 });
+
 
 module.exports = mongoose.model('User', userSchema);
