@@ -48,7 +48,7 @@ if(require.main === module){
     const PORT = process.env.PORT || 4000;
     app.listen(PORT, () => {
         console.log(`API is now online on port ${PORT}`);
-        console.log(`Test URL: http://localhost:${PORT}/boodle/capstone/csp2/health`);
+        console.log(`Capstone2 URL: http://localhost:${PORT}/boodle/capstone/csp2`);
     });
 }
 
