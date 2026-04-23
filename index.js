@@ -27,10 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
 // [SECTION] Database Connection
-mongoose.connect(process.env.MONGODB_STRING, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+mongoose.connect(process.env.MONGODB_STRING);
 
 mongoose.connection.once("open", () => {
     console.log("Now connected to MongoDB Atlas.");
