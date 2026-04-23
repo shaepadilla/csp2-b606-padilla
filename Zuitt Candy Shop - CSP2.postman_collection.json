@@ -1,0 +1,293 @@
+{
+  "info": {
+    "_postman_id": "dae6de70-0bfe-441f-b113-6e5840541866",
+    "name": "Zuitt Candy Shop - CSP2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52021178",
+    "_collection_link": "https://go.postman.co/collection/52021178-dae6de70-0bfe-441f-b113-6e5840541866?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "register-user",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "8mvEReXX.0RN0j4wzEaX66Pc0S88bzaLrIbwVt4TU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@mail.com\",\n    \"mobileNo\": \"09123456789\",\n    \"password\": \"john12345678\",\n    \"batch_number\": 422\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "boodle",
+                "capstone",
+                "csp2",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login-user",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "8mvEReXX.0RN0j4wzEaX66Pc0S88bzaLrIbwVt4TU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"johndoe@mail.com\",\n    \"password\": \"john12345678\",\n    \"batch_number\": 422\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "boodle",
+                "capstone",
+                "csp2",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "retrieve-user-details",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0MjM5ZGQ1OWQ2MmYzODJjNjA1NyIsImVtYWlsIjoiam9obmRvZUBtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3NzY5NjA1ODgsImV4cCI6MTc3NzU2NTM4OH0.u-AeDrt7IOOqxKmdvrdccTGU2RS9WKVabFp5dDPhovA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"batch_number\": 422\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/details",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "boodle",
+                "capstone",
+                "csp2",
+                "users",
+                "details"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "set-as-admin",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0MjM5ZGQ1OWQ2MmYzODJjNjA1NyIsImVtYWlsIjoiam9obmRvZUBtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3NzY5NjA1ODgsImV4cCI6MTc3NzU2NTM4OH0.u-AeDrt7IOOqxKmdvrdccTGU2RS9WKVabFp5dDPhovA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"batch_number\": 422\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/69ea4239dd59d62f382c6057/set-as-admin",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "boodle",
+                "capstone",
+                "csp2",
+                "users",
+                "69ea4239dd59d62f382c6057",
+                "set-as-admin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-password",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZTAzMWU3NTljZWFjN2MzYjg2ZDVmOCIsImVtYWlsIjoib3Jlb2RjYXRAZW1haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzc2NzI1MTY0fQ.nfxFZOiGR1prUUV_rq0ck8xTuIJpIymNkX5Pjh__1KM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "https://api.boodle.zuitt.co/boodle/capstone/csp2/users/update-password",
+              "protocol": "https",
+              "host": [
+                "api",
+                "boodle",
+                "zuitt",
+                "co"
+              ],
+              "path": [
+                "boodle",
+                "capstone",
+                "csp2",
+                "users",
+                "update-password"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Create Product (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johnjohn@gmail.com\",\n  \"mobileNo\": \"09123456789\",\n  \"password\": \"pass\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4000/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Retrieve Product (Admin)",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"johnjohn@gmail.com\",\n  \"mobileNo\": \"09123456789\",\n  \"password\": \"pass\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4000/products/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "products",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
