@@ -14,7 +14,7 @@ module.exports.createAccessToken = (user) => {
     const data = {
         id: String(user._id), // ✅ Convert ObjectId to string safely
         email: user.email,
-        isAdmin: user.isAdmin,
+        isAdmin: user.isAdmin || false, // ✅ IMPORTANT: Include isAdmin field
     };
 
     return jwt.sign(data, process.env.JWT_SECRET_KEY, { expiresIn: "7d" });
@@ -27,7 +27,7 @@ module.exports.verify = (req, res, next) => {
 
     if (!token) {
         console.warn("❌ No Authorization Token Provided.");
-        return res.status(403).json({ auth: "Failed", message: "No Token Provided" });
+        return res.status(401).json({ message: "No token provided" }); // ✅ Changed to 401 and match test expectations
     }
 
     token = token.replace("Bearer ", "").trim();
@@ -36,14 +36,14 @@ module.exports.verify = (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decodedToken) => {
         if (err) {
             console.error("❌ JWT Verification Error:", err.message);
-            return res.status(403).json({ auth: "Failed", message: "Invalid Token" });
+            return res.status(401).json({ message: "Invalid token" }); // ✅ Changed to 401
         }
 
         console.log("📝 Decoded Token:", decodedToken);
 
         if (!decodedToken.id) {
             console.warn("⚠️ User ID is missing in token payload.");
-            return res.status(403).json({ auth: "Failed", message: "Invalid Token Data" });
+            return res.status(401).json({ message: "Invalid token data" }); // ✅ Changed to 401
         }
 
         req.user = decodedToken; // ✅ Attach decoded user data to request
@@ -55,15 +55,19 @@ module.exports.verify = (req, res, next) => {
 //[SECTION] Verify Admin Access
 
 module.exports.verifyAdmin = (req, res, next) => {
+    // ✅ Check if user exists first
+    if (!req.user) {
+        return res.status(401).json({ message: "Unauthorized: No user data" });
+    }
+    
     // Checks if the owner of the token is an admin.
     if (req.user.isAdmin) {
         // If it is, move to the next middleware/controller using next() method.
         next();
     } else {
         // Else, end the request-response cycle by sending the appropriate response and status code.
-        return res.status(403).send({
-            auth: "Failed",
-            message: "Action Forbidden"
+        return res.status(403).json({
+            message: "Admin access required" // ✅ Match test expectations
         });
     }
 };
