@@ -42,11 +42,11 @@ mongoose.connection.on("error", (err) => {
     console.error("MongoDB connection error:", err);
 });
 
-// [SECTION] Routes (removed /b6 prefix for local)
-app.use("/users", userRoutes);
-app.use("/products", productRoutes);
-app.use("/cart", cartRoutes);
-app.use("/orders", orderRoutes);
+// [SECTION] Routes (prefix for local)
+app.use("/boodle/capstone/csp2/users", userRoutes);
+app.use("/boodle/capstone/csp2/products", productRoutes);
+app.use("/boodle/capstone/csp2/cart", cartRoutes);
+app.use("/boodle/capstone/csp2/orders", orderRoutes);
 
 // [SECTION] Server
 if (require.main === module) {
@@ -54,6 +54,7 @@ if (require.main === module) {
 
     app.listen(PORT, () => {
         console.log(`API is now online on port ${PORT}`);
+        console.log(`Test URL: http://localhost:${PORT}/boodle/capstone/csp2`);
     });
 }
 
