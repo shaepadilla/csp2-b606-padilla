@@ -2,7 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-require('dotenv').config();
+require("dotenv").config();
 
 // [SECTION] Route Imports
 const userRoutes = require("./routes/user");
@@ -13,43 +13,48 @@ const orderRoutes = require("./routes/order");
 // [SECTION] Server Setup
 const app = express();
 
-// [SECTION] CORS Configuration
 const corsOptions = {
-    origin: ["*"],
+    origin: [
+        "http://localhost:3000",
+        "http://localhost:8000"
+    ],
     credentials: true,
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 };
 
-// [SECTION] Middleware Configuration
+// [SECTION] Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
 // [SECTION] Database Connection
-mongoose.connect(process.env.MONGODB_STRING);
-
-mongoose.connection.once('open', () => console.log("Now connected to MongoDB Atlas."));
-mongoose.connection.on('error', (err) => console.error("MongoDB connection error:", err));
-
-// [SECTION] Backend Routes with correct prefix for checker
-app.use("/boodle/capstone/csp2/users", userRoutes);
-app.use("/boodle/capstone/csp2/products", productRoutes);
-app.use("/boodle/capstone/csp2/cart", cartRoutes);
-app.use("/boodle/capstone/csp2/orders", orderRoutes);
-
-// [SECTION] Health Check Route
-app.get("/boodle/capstone/csp2/health", (req, res) => {
-    res.status(200).json({ status: "OK", message: "Server is running" });
+mongoose.connect(process.env.MONGODB_STRING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
-// [SECTION] Server Gateway Response
-if(require.main === module){
+mongoose.connection.once("open", () => {
+    console.log("Now connected to MongoDB Atlas.");
+});
+
+mongoose.connection.on("error", (err) => {
+    console.error("MongoDB connection error:", err);
+});
+
+// [SECTION] Routes (removed /b6 prefix for local)
+app.use("/users", userRoutes);
+app.use("/products", productRoutes);
+app.use("/cart", cartRoutes);
+app.use("/orders", orderRoutes);
+
+// [SECTION] Server
+if (require.main === module) {
     const PORT = process.env.PORT || 4000;
+
     app.listen(PORT, () => {
         console.log(`API is now online on port ${PORT}`);
-        console.log(`Capstone2 URL: http://localhost:${PORT}/boodle/capstone/csp2`);
     });
 }
 
-module.exports = app;
+module.exports = { app, mongoose };

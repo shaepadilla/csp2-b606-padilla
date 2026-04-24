@@ -1,13 +1,19 @@
 const express = require("express");
 const cartController = require("../controllers/cart");
-const { verify } = require("../auth");
+const { verify, verifyUserAccess } = require("../auth");
 
 const router = express.Router();
 
-router.get("/", verify, cartController.getCart);
-router.post("/items", verify, cartController.addToCart);
-router.patch("/items/:productId", verify, cartController.updateCartQuantity);
-router.delete("/items/:productId", verify, cartController.removeFromCart);
-router.delete("/", verify, cartController.clearCart);
+// Requirement-friendly aliases
+router.get("/get-cart", verify, verifyUserAccess, cartController.getCart);
+router.post("/add-to-cart", verify, verifyUserAccess, cartController.addToCart);
+router.patch("/update-cart-quantity", verify, verifyUserAccess, cartController.updateCartQuantityByBody);
+
+// REST-style routes
+router.get("/", verify, verifyUserAccess, cartController.getCart);
+router.post("/items", verify, verifyUserAccess, cartController.addToCart);
+router.patch("/items/:productId", verify, verifyUserAccess, cartController.updateCartQuantity);
+router.delete("/items/:productId", verify, verifyUserAccess, cartController.removeFromCart);
+router.delete("/", verify, verifyUserAccess, cartController.clearCart);
 
 module.exports = router;
