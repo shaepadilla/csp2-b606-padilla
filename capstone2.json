@@ -1,5 +1,5 @@
 {
-    "url": "https://your-render-app-url.onrender.com",
+    "url": "https://csp2-b606-padilla-production.up.railway.app",
     "routesPrefix": {
         "users": "/b6/users",
         "products": "/b6/products",
