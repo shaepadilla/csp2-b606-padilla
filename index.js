@@ -45,13 +45,12 @@ mongoose.connection.on("error", (err) => {
 
 // [SECTION] Routes - WITH THE REQUIRED PREFIX
 const API_PREFIX = "/boodle/capstone/csp2";
-app.use(`${API_PREFIX}/users`, userRoutes);
-app.use(`${API_PREFIX}/products`, productRoutes);
-app.use(`${API_PREFIX}/cart`, cartRoutes);
-app.use(`${API_PREFIX}/orders`, orderRoutes);
+// [SECTION] Routes
+app.use("/b6/users", userRoutes);
+app.use("/b6/products", productRoutes);
+app.use("/b6/cart", cartRoutes);
+app.use("/b6/orders", orderRoutes);
 
-// Also keep short version for local testing
-app.use("/users", userRoutes);
 
 // [SECTION] Server
 if (require.main === module) {
@@ -63,4 +62,4 @@ if (require.main === module) {
     });
 }
 
-module.exports = { app, mongoose };
+module.exports = app;

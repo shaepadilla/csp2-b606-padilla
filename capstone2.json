@@ -1,11 +1,9 @@
 {
-    "url": "_____________",
+    "url": "https://your-render-app-url.onrender.com",
     "routesPrefix": {
-
-        "users": "/____/users",
-        "products": "/___/products",
-        "orders": "/__/orders",
-        "cart": "/___/cart"
-
+        "users": "/b6/users",
+        "products": "/b6/products",
+        "orders": "/b6/orders",
+        "cart": "/b6/cart"
     }
 }
