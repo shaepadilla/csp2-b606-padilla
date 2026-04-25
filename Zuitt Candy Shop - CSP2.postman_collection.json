@@ -34,7 +34,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"firstName\": \"James\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jamesDoe@mail.com\",\n    \"mobileNo\": \"09123456788\",\n    \"password\": \"sample123\",\n    \"batch_number\": 422\n}",
+              "raw": "{\n    \"firstName\": \"James\",\n    \"lastName\": \"Doe\",\n    \"email\": \"james22Doe@mail.com\",\n    \"mobileNo\": \"09123456788\",\n    \"password\": \"sample123\",\n    \"batch_number\": 422\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -143,7 +143,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0ZThjMmI4YjRiYzE5ZWJlODY2YiIsImVtYWlsIjoiamFtZXNkb2VAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzc3MDUxODI3LCJleHAiOjE3Nzc2NTY2Mjd9.6DAE3FW8vyBH9qUuW-ZQX3Z7nz0xN-e1FpfZKgCpprI",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0ZThjMmI4YjRiYzE5ZWJlODY2YiIsImVtYWlsIjoiamFtZXNkb2VAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzc3MTMyMTI1LCJleHAiOjE3Nzc3MzY5MjV9.IVaKoDFHT41TAedcUT66IMYE6vnbocrlwQRww7IEk-8",
                   "type": "string"
                 }
               ]
@@ -212,7 +212,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0ZThjMmI4YjRiYzE5ZWJlODY2YiIsImVtYWlsIjoiamFtZXNkb2VAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzc3MDUxODI3LCJleHAiOjE3Nzc2NTY2Mjd9.6DAE3FW8vyBH9qUuW-ZQX3Z7nz0xN-e1FpfZKgCpprI",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0ZThjMmI4YjRiYzE5ZWJlODY2YiIsImVtYWlsIjoiamFtZXNkb2VAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzc3MTMyMTI1LCJleHAiOjE3Nzc3MzY5MjV9.IVaKoDFHT41TAedcUT66IMYE6vnbocrlwQRww7IEk-8",
                   "type": "string"
                 }
               ]
@@ -232,7 +232,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"newPassword\" : \"qwerty123\",\n    \"batch_number\": 422\n}",
+              "raw": "{\n    \"currentPassword\": \"sample123\",\n    \"newPassword\" : \"qwerty123\",\n    \"batch_number\": 422\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -260,6 +260,16 @@
         {
           "name": "Update Profile",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0ZThjMmI4YjRiYzE5ZWJlODY2YiIsImVtYWlsIjoiamFtZXNkb2VAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzc3MTMyMTI1LCJleHAiOjE3Nzc3MzY5MjV9.IVaKoDFHT41TAedcUT66IMYE6vnbocrlwQRww7IEk-8",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PATCH",
             "header": [
               {
@@ -303,6 +313,16 @@
         {
           "name": "Set User As Admin",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0ZWQ0MmI4YjRiYzE5ZWJlODY2YyIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3NzcxMzIxNDQsImV4cCI6MTc3NzczNjk0NH0.l6Uav3Yd2j0NsciKeDpg9-lUIl7qiHF28be7GLq14VA",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PATCH",
             "header": [
               {

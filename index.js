@@ -16,6 +16,7 @@ const app = express();
 const corsOptions = {
     origin: [
         "http://localhost:3000",
+        "http://localhost:4000",
         "http://localhost:8000"
     ],
     credentials: true,
@@ -42,11 +43,15 @@ mongoose.connection.on("error", (err) => {
     console.error("MongoDB connection error:", err);
 });
 
-// [SECTION] Routes (prefix for local)
-app.use("/boodle/capstone/csp2/users", userRoutes);
-app.use("/boodle/capstone/csp2/products", productRoutes);
-app.use("/boodle/capstone/csp2/cart", cartRoutes);
-app.use("/boodle/capstone/csp2/orders", orderRoutes);
+// [SECTION] Routes - WITH THE REQUIRED PREFIX
+const API_PREFIX = "/boodle/capstone/csp2";
+app.use(`${API_PREFIX}/users`, userRoutes);
+app.use(`${API_PREFIX}/products`, productRoutes);
+app.use(`${API_PREFIX}/cart`, cartRoutes);
+app.use(`${API_PREFIX}/orders`, orderRoutes);
+
+// Also keep short version for local testing
+app.use("/users", userRoutes);
 
 // [SECTION] Server
 if (require.main === module) {
@@ -54,7 +59,7 @@ if (require.main === module) {
 
     app.listen(PORT, () => {
         console.log(`API is now online on port ${PORT}`);
-        console.log(`Test URL: http://localhost:${PORT}/boodle/capstone/csp2`);
+        console.log(`Test endpoint: http://localhost:${PORT}${API_PREFIX}/users/register`);
     });
 }
 
