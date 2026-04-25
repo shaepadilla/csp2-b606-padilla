@@ -162,3 +162,29 @@ module.exports.updatePassword = async (req, res) => {
         return res.status(500).json({ message: "Internal server error" });
     }
 };
+
+module.exports.updateProfile = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const { firstName, lastName, mobileNo } = req.body;
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            { firstName, lastName, mobileNo },
+            { new: true }
+        ).select("-password");
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({
+            message: "Profile updated successfully",
+            updatedUser: updatedUser
+        });
+
+    } catch (error) {
+        console.error("Update Profile Error:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
