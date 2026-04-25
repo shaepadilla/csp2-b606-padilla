@@ -12,10 +12,11 @@ router.post("/login", userController.loginUser); // ✅ Removed trailing slash
 
 // Protected user routes (regular users only, admins blocked)
 router.get("/details", verify, verifyUserAccess, userController.getProfile);
-router.put("/update-password", verify, verifyUserAccess, userController.updatePassword); // ✅ Changed from PATCH to PUT
+router.patch("/update-profile", verify, verifyUserAccess, userController.updateProfile);
+router.patch("/update-password", verify, verifyUserAccess, userController.updatePassword); // ✅ Changed from PATCH to PUT
 
 // Protected admin routes (admins only)
-router.put("/:id/set-as-admin", verify, verifyAdmin, userController.updateAdmin); // ✅ Changed from PATCH to PUT
+router.patch("/:id/set-as-admin", verify, verifyAdmin, userController.updateAdmin); // ✅ Changed from PATCH to PUT
 
 
 // router.get("/auth/me", verify, verifyUserAccess, userController.getProfile);

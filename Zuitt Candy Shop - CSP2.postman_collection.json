@@ -1,9 +1,11 @@
 {
   "info": {
-    "_postman_id": "728f291365768-1777026444992",
-    "name": "Capstone 2 - E-commerce API",
+    "_postman_id": "82e2247f-211c-48b0-a576-9c938f94f24f",
+    "name": "Zuitt Candy Shop - CSP2",
     "description": "Complete Postman collection for testing the Capstone 2 E-commerce API. Set baseUrl, userToken, adminToken, productId, userId, and orderId in collection variables.",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52021178",
+    "_collection_link": "https://go.postman.co/collection/52021178-82e2247f-211c-48b0-a576-9c938f94f24f?source=collection_link"
   },
   "item": [
     {
@@ -12,6 +14,16 @@
         {
           "name": "Register User",
           "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "8mvEReXX.0RN0j4wzEaX66Pc0S88bzaLrIbwVt4TU",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [
               {
@@ -22,7 +34,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"firstName\": \"James\",\n  \"lastName\": \"Doe\",\n  \"email\": \"jamesDoe@mail.com\",\n  \"password\": \"sample123\",\n  \"mobileNo\": \"09171234567\"\n}",
+              "raw": "{\n    \"firstName\": \"James\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jamesDoe@mail.com\",\n    \"mobileNo\": \"09123456788\",\n    \"password\": \"sample123\",\n    \"batch_number\": 422\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -30,11 +42,16 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/users/register",
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/register",
+              "protocol": "http",
               "host": [
-                "{{baseUrl}}"
+                "localhost"
               ],
+              "port": "4000",
               "path": [
+                "boodle",
+                "capstone",
+                "csp2",
                 "users",
                 "register"
               ]
@@ -63,11 +80,16 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/users/login",
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/login",
+              "protocol": "http",
               "host": [
-                "{{baseUrl}}"
+                "localhost"
               ],
+              "port": "4000",
               "path": [
+                "boodle",
+                "capstone",
+                "csp2",
                 "users",
                 "login"
               ]
@@ -96,11 +118,16 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/users/login",
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/login",
+              "protocol": "http",
               "host": [
-                "{{baseUrl}}"
+                "localhost"
               ],
+              "port": "4000",
               "path": [
+                "boodle",
+                "capstone",
+                "csp2",
                 "users",
                 "login"
               ]
@@ -111,6 +138,16 @@
         {
           "name": "Get User Details",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0ZThjMmI4YjRiYzE5ZWJlODY2YiIsImVtYWlsIjoiamFtZXNkb2VAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzc3MDUxODI3LCJleHAiOjE3Nzc2NTY2Mjd9.6DAE3FW8vyBH9qUuW-ZQX3Z7nz0xN-e1FpfZKgCpprI",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [
               {
@@ -120,11 +157,16 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/users/details",
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/details",
+              "protocol": "http",
               "host": [
-                "{{baseUrl}}"
+                "localhost"
               ],
+              "port": "4000",
               "path": [
+                "boodle",
+                "capstone",
+                "csp2",
                 "users",
                 "details"
               ]
@@ -144,11 +186,16 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/users/auth/me",
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/auth/me",
+              "protocol": "http",
               "host": [
-                "{{baseUrl}}"
+                "localhost"
               ],
+              "port": "4000",
               "path": [
+                "boodle",
+                "capstone",
+                "csp2",
                 "users",
                 "auth",
                 "me"
@@ -160,6 +207,16 @@
         {
           "name": "Update Password",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZWE0ZThjMmI4YjRiYzE5ZWJlODY2YiIsImVtYWlsIjoiamFtZXNkb2VAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzc3MDUxODI3LCJleHAiOjE3Nzc2NTY2Mjd9.6DAE3FW8vyBH9qUuW-ZQX3Z7nz0xN-e1FpfZKgCpprI",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PATCH",
             "header": [
               {
@@ -175,7 +232,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"currentPassword\": \"sample123\",\n  \"newPassword\": \"sample1234\"\n}",
+              "raw": "{\n    \"newPassword\" : \"qwerty123\",\n    \"batch_number\": 422\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -183,11 +240,16 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/users/update-password",
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/update-password",
+              "protocol": "http",
               "host": [
-                "{{baseUrl}}"
+                "localhost"
               ],
+              "port": "4000",
               "path": [
+                "boodle",
+                "capstone",
+                "csp2",
                 "users",
                 "update-password"
               ]
@@ -221,11 +283,16 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/users/update-profile",
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/update-profile",
+              "protocol": "http",
               "host": [
-                "{{baseUrl}}"
+                "localhost"
               ],
+              "port": "4000",
               "path": [
+                "boodle",
+                "capstone",
+                "csp2",
                 "users",
                 "update-profile"
               ]
@@ -250,11 +317,16 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/users/{{userId}}/set-as-admin",
+              "raw": "http://localhost:4000/boodle/capstone/csp2/users/{{userId}}/set-as-admin",
+              "protocol": "http",
               "host": [
-                "{{baseUrl}}"
+                "localhost"
               ],
+              "port": "4000",
               "path": [
+                "boodle",
+                "capstone",
+                "csp2",
                 "users",
                 "{{userId}}",
                 "set-as-admin"
