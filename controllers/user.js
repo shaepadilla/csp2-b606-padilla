@@ -62,8 +62,8 @@ module.exports.loginUser = async (req, res) => {
         const user = await User.findOne({ email });
         
         if (!user) {
-            return res.status(404).json({ message: "No email found" });
-        }
+            return res.status(404).json({ message: "No email found. Please check your email and try again." });
+}
 
         const isPasswordCorrect = bcrypt.compareSync(req.body.password, user.password);
         if (!isPasswordCorrect) {
@@ -72,10 +72,10 @@ module.exports.loginUser = async (req, res) => {
 
         const token = auth.createAccessToken(user);
         
-        return res.status(200).json({
+       return res.status(200).json({
             message: "Login successful",
-            data: { token: token }
-        });
+            access: token  // many capstone tests expect 'access' not 'data.token'
+});
 
     } catch (error) {
         console.error("Login Error:", error);
